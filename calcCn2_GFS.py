@@ -192,9 +192,8 @@ def calc_Cn2_GFS(leading_folder, bucket_name,limit, increment,degrees):
       nlev_mid=nlev_all-1
       ##########################################################
       ##########################################################
-      print('making netcdf file for '+yrmodahr_str)
-      print('making netcdf file for number=',yrmodahr_str)
-      Cn2_filename = 'cn2_'+yrmodahr_str+'.nc'
+      print('making netcdf file for '+yrmodahr_str+' fcst'+timestring)
+      Cn2_filename = 'cn2_'+yrmodahr_str+'_f'+timestring+'.nc'
       
       Cn2_data_nc = Dataset(Cn2_filename,'w',format='NETCDF4')
       Cn2_data_nc.createDimension('nlat',nlat)
@@ -208,18 +207,18 @@ def calc_Cn2_GFS(leading_folder, bucket_name,limit, increment,degrees):
       ncCn2=Cn2_data_nc.createVariable('Cn2',np.float32,('nlev','nlat','nlon',),zlib=False)
       
       
-      ncHxy=Cn2_data_nc.createVariable('Hxy',np.float32,('nlat','nlon',),zlib=False)
-      ncTxy=Cn2_data_nc.createVariable('Txy',np.float32,('nlat','nlon',),zlib=False)
-      ncLo_4_3rds=Cn2_data_nc.createVariable('Lo_4_3rds',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncS=Cn2_data_nc.createVariable('S',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncT=Cn2_data_nc.createVariable('T_mid',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncZ=Cn2_data_nc.createVariable('z_mid',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncZ2=Cn2_data_nc.createVariable('z_mid_2',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncdTHETAdz=Cn2_data_nc.createVariable('dTHETAdz',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncCt2=Cn2_data_nc.createVariable('Ct2',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncHstack=Cn2_data_nc.createVariable('Hstack',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncdT=Cn2_data_nc.createVariable('dT',np.float32,('nlev','nlat','nlon',),zlib=False)
-      ncdz=Cn2_data_nc.createVariable('dz',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncHxy=Cn2_data_nc.createVariable('Hxy',np.float32,('nlat','nlon',),zlib=False)
+#      ncTxy=Cn2_data_nc.createVariable('Txy',np.float32,('nlat','nlon',),zlib=False)
+#      ncLo_4_3rds=Cn2_data_nc.createVariable('Lo_4_3rds',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncS=Cn2_data_nc.createVariable('S',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncT=Cn2_data_nc.createVariable('T_mid',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncZ=Cn2_data_nc.createVariable('z_mid',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncZ2=Cn2_data_nc.createVariable('z_mid_2',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncdTHETAdz=Cn2_data_nc.createVariable('dTHETAdz',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncCt2=Cn2_data_nc.createVariable('Ct2',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncHstack=Cn2_data_nc.createVariable('Hstack',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncdT=Cn2_data_nc.createVariable('dT',np.float32,('nlev','nlat','nlon',),zlib=False)
+#      ncdz=Cn2_data_nc.createVariable('dz',np.float32,('nlev','nlat','nlon',),zlib=False)
       
       print('NOW WRITING')
       ncDate[:]=int(yrmodahr_str)
@@ -228,18 +227,18 @@ def calc_Cn2_GFS(leading_folder, bucket_name,limit, increment,degrees):
       nclevs[:]=p_mid
       ncCn2[:]=Cn2
       
-      ncHxy[:]=Hxy
-      ncTxy[:]=Txy
-      ncLo_4_3rds[:]=Lo_4_3rds
-      ncS[:]=S
-      ncT[:]=T_mid
-      ncZ[:]=z_mid
-      ncZ2[:]=z_mid_2
-      ncdTHETAdz[:]=dTHETAdz
-      ncCt2[:]=Ct2
-      ncHstack[:]=Hstack
-      ncdT[:]=dT
-      ncdz[:]=dz
+#      ncHxy[:]=Hxy
+#      ncTxy[:]=Txy
+#      ncLo_4_3rds[:]=Lo_4_3rds
+#      ncS[:]=S
+#      ncT[:]=T_mid
+#      ncZ[:]=z_mid
+#      ncZ2[:]=z_mid_2
+#      ncdTHETAdz[:]=dTHETAdz
+#      ncCt2[:]=Ct2
+#      ncHstack[:]=Hstack
+#      ncdT[:]=dT
+#      ncdz[:]=dz
       
       Cn2_data_nc.close()
 
